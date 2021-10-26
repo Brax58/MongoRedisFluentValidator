@@ -1,10 +1,11 @@
-﻿using MongoDB.Driver;
+﻿using Domain.Repository;
+using MongoDB.Driver;
 using MongoRedisFluentValidator.Entity;
 using MongoRedisFluentValidator.Infraestrutura.Base;
 
 namespace MongoRedisFluentValidator.Infraestrutura
 {
-    public class PessoaRepository
+    public class PessoaRepository : IPessoaRepository
     {
         private readonly IMongoCollection<Pessoa> _connectionMongo;
         public PessoaRepository()

@@ -1,5 +1,4 @@
 ﻿using MongoDB.Driver;
-using MongoRedisFluentValidator.Entity;
 
 namespace MongoRedisFluentValidator.Infraestrutura.Base
 {

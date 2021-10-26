@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoRedisFluentValidator", "MongoRedisFluentValidator\MongoRedisFluentValidator.csproj", "{9542A3CB-EE18-4B12-97F2-156AE29335BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoRedisFluentValidator.API", "MongoRedisFluentValidator\MongoRedisFluentValidator.API.csproj", "{9542A3CB-EE18-4B12-97F2-156AE29335BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoRedisFluentValidator.Repository", "Repository\MongoRedisFluentValidator.Repository.csproj", "{F7D1F239-2412-4523-82C8-FFE0916F2536}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoRedisFluentValidator.Domain", "Domain\MongoRedisFluentValidator.Domain.csproj", "{018E8E92-AB86-4EB0-9CBB-7C04F120C244}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoRedisFluentValidator.Service", "Service\MongoRedisFluentValidator.Service.csproj", "{C55B8818-2F8E-460B-A83D-5C95B289E982}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{9542A3CB-EE18-4B12-97F2-156AE29335BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9542A3CB-EE18-4B12-97F2-156AE29335BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9542A3CB-EE18-4B12-97F2-156AE29335BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D1F239-2412-4523-82C8-FFE0916F2536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D1F239-2412-4523-82C8-FFE0916F2536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D1F239-2412-4523-82C8-FFE0916F2536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D1F239-2412-4523-82C8-FFE0916F2536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{018E8E92-AB86-4EB0-9CBB-7C04F120C244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{018E8E92-AB86-4EB0-9CBB-7C04F120C244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{018E8E92-AB86-4EB0-9CBB-7C04F120C244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{018E8E92-AB86-4EB0-9CBB-7C04F120C244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C55B8818-2F8E-460B-A83D-5C95B289E982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55B8818-2F8E-460B-A83D-5C95B289E982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55B8818-2F8E-460B-A83D-5C95B289E982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55B8818-2F8E-460B-A83D-5C95B289E982}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
