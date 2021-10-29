@@ -18,9 +18,9 @@ namespace MongoRedisFluentValidator.Controllers
         }
 
         [HttpPost]
-        public async Task<Guid> InsertPessoa([FromBody] InsertPessoaDTO request) 
+        public ActionResult<Guid> InsertPessoa([FromBody] InsertPessoaDTO request) 
         {
-            
+            return Ok(_mediator.Send(request));
         }
     }
 }

@@ -1,3 +1,4 @@
+using Domain.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MongoRedisFluentValidator.Infraestrutura;
+using MongoRedisFluentValidator.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +31,16 @@ namespace MongoRedisFluentValidator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MongoRedisFluentValidator", Version = "v1" });
             });
+
+            services.AddMediatR(typeof(Startup));
+
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
