@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MongoRedisFluentValidator.DTO;
+using MongoRedisFluentValidator.Entity;
 using MongoRedisFluentValidator.Infraestrutura;
 using MongoRedisFluentValidator.Service;
 using System;
@@ -39,6 +41,9 @@ namespace MongoRedisFluentValidator
             });
 
             services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(InsertPessoaDTO).GetTypeInfo().Assembly);
+
+            services.AddStackExchangeRedisCache(options => options.Configuration = "localhost:6379");
 
             services.AddScoped<IPessoaRepository, PessoaRepository>();
         }
