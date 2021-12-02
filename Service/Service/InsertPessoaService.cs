@@ -19,8 +19,8 @@ namespace MongoRedisFluentValidator.Service
 
         public async Task<Guid> Handle(InsertPessoaDTO request, CancellationToken cancellationToken)
         {
-            _pessoaRepository.InserirPessoa(new Pessoa(request.Nome,request.DataNascimento,request.Preco));
-            var pessoa = await _pessoaRepository.BuscarPessoa(request.Nome);
+            _pessoaRepository.InsertPessoa(new Pessoa(request.Nome,request.DataNascimento,request.Preco));
+            var pessoa = await _pessoaRepository.GetPessoaById(request.Nome);
 
             return pessoa.Id;
         }

@@ -1,7 +1,9 @@
 ﻿using Domain.Repository;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoRedisFluentValidator.Entity;
 using MongoRedisFluentValidator.Infraestrutura.Base;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MongoRedisFluentValidator.Infraestrutura
@@ -14,14 +16,19 @@ namespace MongoRedisFluentValidator.Infraestrutura
             _connectionMongo = Conexao.Database().GetCollection<Pessoa>("Pessoa");
         }
 
-        public void InserirPessoa(Pessoa request)
+        public void InsertPessoa(Pessoa request)
         {
             _connectionMongo.InsertOne(request);
         }
 
-        public Task<Pessoa> BuscarPessoa(string request)
+        public async Task<IEnumerable<Pessoa>> GetPessoa()
         {
-            return _connectionMongo.Find(x => x.Nome == request).SingleAsync();
+            return await _connectionMongo.Find(new BsonDocument()).ToListAsync();
+        }
+        
+        public async Task<Pessoa> GetPessoaById(string nome)
+        {
+            return await _connectionMongo.Find(x => x.Nome == nome).SingleAsync();
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MongoRedisFluentValidator.DTO;
-using StackExchange.Redis;
+using MongoRedisFluentValidator.Service.DTO;
+using MongoRedisFluentValidator.Service.DTO.BaseDTO;
 using System;
 using System.Threading.Tasks;
 
@@ -12,12 +13,10 @@ namespace MongoRedisFluentValidator.Controllers
     public class PessoaController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IConnectionMultiplexer _redis;
 
-        public PessoaController(IMediator mediator,IConnectionMultiplexer redis)
+        public PessoaController(IMediator mediator)
         {
             _mediator = mediator;
-            _redis = redis;
         }
 
         [HttpPost]
@@ -29,6 +28,7 @@ namespace MongoRedisFluentValidator.Controllers
         [HttpGet]
         public async Task<ActionResult> GetPessoa()
         {
+            return Ok(await _mediator.Send(new ParamEmpty<GetPessoaDTO>()));
         }
     }                                                                                                                                          
 }
