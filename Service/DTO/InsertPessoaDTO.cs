@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MongoDB.Bson;
 using System;
 
 namespace MongoRedisFluentValidator.DTO

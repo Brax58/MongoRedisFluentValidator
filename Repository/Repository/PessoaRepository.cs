@@ -23,9 +23,9 @@ namespace MongoRedisFluentValidator.Infraestrutura
 
         public async Task<IEnumerable<Pessoa>> GetPessoa()
         {
-            return await _connectionMongo.Find(new BsonDocument()).ToListAsync();
+            return await _connectionMongo.Find(Builders<Pessoa>.Filter.Empty).ToListAsync();
         }
-        
+
         public async Task<Pessoa> GetPessoaById(string nome)
         {
             return await _connectionMongo.Find(x => x.Nome == nome).SingleAsync();

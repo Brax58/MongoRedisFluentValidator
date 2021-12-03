@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MongoRedisFluentValidator.DTO;
+using MongoRedisFluentValidator.Entity;
 using MongoRedisFluentValidator.Service.DTO;
 using MongoRedisFluentValidator.Service.DTO.BaseDTO;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MongoRedisFluentValidator.Controllers
@@ -28,7 +30,9 @@ namespace MongoRedisFluentValidator.Controllers
         [HttpGet]
         public async Task<ActionResult> GetPessoa()
         {
-            return Ok(await _mediator.Send(new ParamEmpty<GetPessoaDTO>()));
+            var request = new ParamEmpty<IEnumerable<Pessoa>>();
+
+            return Ok(await _mediator.Send(request));
         }
     }                                                                                                                                          
 }
