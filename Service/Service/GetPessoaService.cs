@@ -36,7 +36,7 @@ namespace MongoRedisFluentValidator.Service.Service
 
             var pessoa = await _pessoaRepository.GetPessoa();
 
-            await redis.StringSetAsync($"Get:Pessoa",JsonConvert.SerializeObject(pessoa),TimeSpan.FromDays(30));
+            await redis.StringSetAsync($"GET:Pessoa",JsonConvert.SerializeObject(pessoa),TimeSpan.FromDays(30));
             return pessoa;
         }
     }

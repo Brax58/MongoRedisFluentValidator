@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoRedisFluentValidator.Entity;
 using MongoRedisFluentValidator.Infraestrutura.Base;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,9 +27,14 @@ namespace MongoRedisFluentValidator.Infraestrutura
             return await _connectionMongo.Find(Builders<Pessoa>.Filter.Empty).ToListAsync();
         }
 
-        public async Task<Pessoa> GetPessoaById(string nome)
+        public async Task<Pessoa> GetPessoaById(Guid id)
         {
-            return await _connectionMongo.Find(x => x.Nome == nome).SingleAsync();
+            return await _connectionMongo.Find(x => x.Id == id).SingleAsync();
+        }
+
+        public async Task<DeleteResult> DeletePessoa(Guid id) 
+        {
+            return await _connectionMongo.DeleteOneAsync<Pessoa>(x => x.Id == id);
         }
     }
 }

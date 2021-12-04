@@ -15,22 +15,21 @@ namespace MongoRedisFluentValidator.Service
         private readonly IPessoaRepository _pessoaRepository;
         private readonly IConnectionMultiplexer _redis;
 
-        public InsertPessoaService(IPessoaRepository pessoaRepository,IConnectionMultiplexer redis)
+        public InsertPessoaService(IPessoaRepository pessoaRepository, IConnectionMultiplexer redis)
         {
             _pessoaRepository = pessoaRepository;
             _redis = redis;
         }
 
-        public async Task<Guid> Handle(InsertPessoaDTO request, CancellationToken cancellationToken)
+        public Task<Guid> Handle(InsertPessoaDTO request, CancellationToken cancellationToken)
         {
             var redis = _redis.GetDatabase(2);
+            var pessoa = new Pessoa(request.Nome, request.DataNascimento, request.Preco);
+            
+            _pessoaRepository.InsertPessoa(pessoa);
+            redis.KeyDelete($"GET:Pessoa");
 
-            _pessoaRepository.InsertPessoa(new Pessoa(request.Nome,request.DataNascimento,request.Preco));
-            redis.KeyDelete($"Get:Pessoa");
-
-            var pessoa = await _pessoaRepository.GetPessoaById(request.Nome);
-
-            return pessoa.Id;
+            return Task.FromResult(pessoa.Id);
         }
     }
 }
